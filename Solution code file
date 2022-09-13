@@ -1,0 +1,65 @@
+
+
+
+// link for problem is :- https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
+
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+     int arr[1002][1002];
+    
+    Solution()
+    {
+        memset(arr,-1,sizeof(arr));
+    }
+    //Function to return max value that can be put in knapsack of capacity W.
+    int knapSack(int w, int wt[], int val[], int n) 
+    { 
+       // Your code here
+     
+        if(n==0||w==0) return 0;
+        
+        if(arr[n-1][w]!=-1) return arr[n-1][w];
+        
+        if(wt[n-1]>w) return arr[n-1][w]=knapSack(w,wt,val,n-1);
+        else return arr[n-1][w]=max(knapSack(w,wt,val,n-1),val[n-1] + knapSack(w-wt[n-1],wt,val,n-1));
+       return 0;
+    }
+};
+//{ Driver Code Starts.
+
+int main()
+ {
+    //taking total testcases
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        //reading number of elements and weight
+        int n, w;
+        cin>>n>>w;
+        
+        int val[n];
+        int wt[n];
+        
+        //inserting the values
+        for(int i=0;i<n;i++)
+            cin>>val[i];
+        
+        //inserting the weights
+        for(int i=0;i<n;i++)
+            cin>>wt[i];
+        Solution ob;
+        //calling method knapSack()
+        cout<<ob.knapSack(w, wt, val, n)<<endl;
+        
+    }
+	return 0;
+}
+// } Driver Code Ends
