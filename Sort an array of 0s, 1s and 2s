@@ -1,0 +1,63 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+    
+    void sort012(int arr[], int n)
+    {
+        // code here 
+        vector<int>vec(3);
+        
+        for(int i=0;i<n;i++){
+            vec[arr[i]]++;
+        }
+        int k=0;
+        
+        for(int i=0;i<3;i++){
+            for(int j=0;j<vec[i];j++){
+                arr[k]=i;
+                k++;
+            }
+        }
+       
+    }
+    
+    
+};
+
+//{ Driver Code Starts.
+int main() {
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int n;
+        cin >>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin >> a[i];
+        }
+
+        Solution ob;
+        ob.sort012(a, n);
+
+        for(int i=0;i<n;i++){
+            cout << a[i]  << " ";
+        }
+
+        cout << endl;
+        
+        
+    }
+    return 0;
+}
+
+
+// } Driver Code Ends
